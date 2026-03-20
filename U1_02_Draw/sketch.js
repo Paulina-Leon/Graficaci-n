@@ -1,58 +1,51 @@
+let x = 200;
+let y = 0;
+let velocidadX = 3;
+let velocidadY = 0;
+let gravedad = 0.5;
+
 function setup() {
-  createCanvas(800, 500);
-  background(180);
+    createCanvas(400, 400);
 }
 
 function draw() {
-  line(0,250,800,250);
-  stroke("purple");
-  line(400,0,400,800);
-  stroke(255, 0, 0);
-  line(800,500,0,0);
-  line(0,500,800,0);
-  fill(0,0,255)
-  noStroke();
-  circle(400,250, 100);
-  fill(0)
-
-
- 
-  stroke(0);
-  line(30,20,185,20);
-  stroke(126);
-  line(185,20,185,175);
-  stroke(255);
-  line(185,175,30,175);
-  line(30,175,30,20);
-
-
-
-
-  stroke(0);
-  line(615,20,770,20);
-  stroke(126);
-  line(770,20,770,175);
-  stroke(255);
-  line(770,175,615,175);
-  line(615,175,615,20);
-
-
-  stroke(0);
-  line(615,250,770,250);
-  stroke(126);
-  line(770,250,770,405);
-  stroke(255);
-  line(770,405,615,405);
-  line(615,405,615,250); 
-
-
-
-  stroke(0);
-  line(30,250,185,250);
-  stroke(126);
-  line(185,250,185,405);
-  stroke(255);
-  line(185,405,30,405);
-  line(30,405,30,250);
-
+    background(147, 0, 211);
+    frameRate(30);
+    
+    // Pelota roja (con movimiento en X)
+    fill(255, 0, 0);
+    circle(x, 200, 40);
+    
+    // Pelota azul (con movimiento en Y)
+    fill(0, 0, 255);
+    circle(200, y, 40);
+    
+    // Aplicar gravedad a la pelota azul
+    velocidadY += gravedad;
+    
+    // Mover ambas pelotas
+    x += velocidadX;
+    y += velocidadY;
+    
+    // Rebote en X (pelota roja)
+    if (x > 380 || x < 20) {
+        velocidadX = -velocidadX;
+    }
+    
+    // Rebote en Y con pérdida de energía (pelota azul)
+    if (y > 380) {
+        y = 380; // Evitar que se hunda
+        velocidadY = -velocidadY * 0.8; // Rebote con pérdida de energía
+        
+        // Detener rebotes muy pequeños
+        if (Math.abs(velocidadY) < 1) {
+            velocidadY = 0;
+            y = 380;
+        }    }
+    
+    // Rebote en la parte superior
+    if (y < 20) {
+        y = 20;
+        velocidadY = -velocidadY;
+    }
 }
