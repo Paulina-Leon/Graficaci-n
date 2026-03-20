@@ -1,7 +1,5 @@
 function setup() {
-  createCanvas(400, 200);
-}
-
+  createCanvas(400, 200);}
 function draw() {
  background(240);
  // Con suavizado
@@ -10,5 +8,4 @@ function draw() {
  line(50, 150, 150, 50);
  // Sin suavizado
  noSmooth();
- line(250, 150, 350, 50);
-}
+ line(250, 150, 350, 50);}

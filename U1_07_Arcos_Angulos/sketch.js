@@ -1,13 +1,11 @@
 function setup() {
-  createCanvas(400, 400);
-}
-
+  createCanvas(400, 400);}
 function draw() {
   background(240)
   let cx = width / 2;
   let cy = height / 2;
   let r = 150;
-  //caratyka
+  //1) Carátula
   stroke(0);
   strokeWeight(3);
   noFill();
@@ -22,5 +20,4 @@ function draw() {
   line(cx, cy, x2, y2);
   // 5) Arco de progreso (opcional)
   strokeWeight(8);
-  arc(cx, cy, r * 2.1, r * 2.1, 0, ang);
-}
+  arc(cx, cy, r * 2.1, r * 2.1, 0, ang);}
