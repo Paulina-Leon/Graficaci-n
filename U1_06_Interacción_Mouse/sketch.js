@@ -1,58 +1,30 @@
+let figuras = []; 
+
 function setup() {
-  createCanvas(800, 500);
-  background(180);
+  createCanvas(600, 400);
+  figuras = [];
 }
 
 function draw() {
-  line(0,250,800,250);
-  stroke("purple");
-  line(400,0,400,800);
-  stroke(255, 0, 0);
-  line(800,500,0,0);
-  line(0,500,800,0);
-  fill(0,0,255)
-  noStroke();
-  circle(400,250, 100);
-  fill(0)
+  background(240);
+  for (let fig of figuras) {
+    fill(fig.color);
+    if (fig.tipo === 'circulo') {
+      circle(fig.x, fig.y, fig.tamano);
+    } else if (fig.tipo === 'rectangulo') {
+      rect(fig.x, fig.y, fig.tamano, fig.tamano);
+    }
+  }
+}
 
-
- 
-  stroke(0);
-  line(30,20,185,20);
-  stroke(126);
-  line(185,20,185,175);
-  stroke(255);
-  line(185,175,30,175);
-  line(30,175,30,20);
-
-
-
-
-  stroke(0);
-  line(615,20,770,20);
-  stroke(126);
-  line(770,20,770,175);
-  stroke(255);
-  line(770,175,615,175);
-  line(615,175,615,20);
-
-
-  stroke(0);
-  line(615,250,770,250);
-  stroke(126);
-  line(770,250,770,405);
-  stroke(255);
-  line(770,405,615,405);
-  line(615,405,615,250); 
-
-
-
-  stroke(0);
-  line(30,250,185,250);
-  stroke(126);
-  line(185,250,185,405);
-  stroke(255);
-  line(185,405,30,405);
-  line(30,405,30,250);
-
+function mousePressed() {
+  // Guardamos no solo la posición, sino también un color y tipo aleatorios
+  let nuevaFigura = {
+    x: mouseX,
+    y: mouseY,
+    tipo: random(['circulo', 'rectangulo']),
+    color: color(random(255), random(255), random(255)),
+    tamano: random(20, 50)
+  };
+  figuras.push(nuevaFigura);
 }
